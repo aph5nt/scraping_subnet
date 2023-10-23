@@ -21,6 +21,8 @@ import os
 import logging
 from apify_client import ApifyClient
 
+from neurons.utils import mask_sensitive_data
+
 # Set up logger for the script
 logger = logging.getLogger(__name__)
 
@@ -40,7 +42,7 @@ class ActorConfig:
         """
         # self.api_key = os.environ.get('APIFY_API_KEY')  # Get the Apify API key from environment variable
         self.api_key = os.getenv("APIFY_API_KEY")
-        print(self.api_key)
+        print(mask_sensitive_data(self.api_key))
         self.actor_id = actor_id  # Actor ID
 
 
